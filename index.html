@@ -1,0 +1,1390 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>EXCELLENCE Centre Dentaire – N'gaous, Batna</title>
+  <meta name="description" content="EXCELLENCE Centre Dentaire à N'gaous, Batna, Algérie. Clinique dentaire spécialisée. Contactez-nous au 0663 53 52 52 pour prendre rendez-vous." />
+  <meta name="keywords" content="dentiste N'gaous, dentiste Batna, excellence centre dentaire, clinique dentaire Algérie" />
+  <meta property="og:title" content="EXCELLENCE Centre Dentaire – N'gaous, Batna" />
+  <meta property="og:description" content="Votre clinique dentaire à N'gaous, Batna. Prenez rendez-vous via WhatsApp." />
+  <meta property="og:type" content="website" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet" />
+  <script src="https://unpkg.com/react@18/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; overflow-x: hidden; }
+    html { scroll-behavior: smooth; }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(40px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to   { opacity: 1; }
+    }
+    @keyframes slideDown {
+      from { opacity: 0; transform: translateY(-20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes pulse-wa {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(37,211,102,0.5); }
+      50%       { box-shadow: 0 0 0 16px rgba(37,211,102,0); }
+    }
+    @keyframes floatBadge {
+      0%, 100% { transform: translateY(0px); }
+      50%       { transform: translateY(-8px); }
+    }
+    @keyframes shimmer {
+      0%   { background-position: -200% center; }
+      100% { background-position: 200% center; }
+    }
+    @keyframes rotateStar {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    .animate-fadeInUp  { animation: fadeInUp 0.8s ease forwards; }
+    .animate-fadeIn    { animation: fadeIn 1s ease forwards; }
+    .animate-slideDown { animation: slideDown 0.6s ease forwards; }
+
+    .hero-bg {
+      position: relative;
+      background: #0a0a0a;
+      min-height: 100vh;
+      overflow: hidden;
+    }
+    .hero-reception-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      opacity: 0.35;
+    }
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(0,0,0,0.85) 0%,
+        rgba(10,30,60,0.7) 50%,
+        rgba(0,0,0,0.6) 100%
+      );
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    .nav-glass {
+      background: rgba(255,255,255,0.08);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .wa-float {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      z-index: 9999;
+      animation: pulse-wa 2.5s infinite;
+      border-radius: 50%;
+    }
+    .wa-float:hover { transform: scale(1.1); transition: transform 0.2s; }
+
+    .card-hover {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    .card-hover:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(59,130,246,0.15);
+    }
+
+    .service-card {
+      background: linear-gradient(135deg, #f8faff 0%, #eef3ff 100%);
+      border: 1px solid rgba(59,130,246,0.12);
+      transition: all 0.35s ease;
+    }
+    .service-card:hover {
+      background: linear-gradient(135deg, #3b82f6 0%, #1d4ed8 100%);
+      border-color: transparent;
+    }
+    .service-card:hover .service-icon { filter: brightness(0) invert(1); }
+    .service-card:hover .service-title { color: #fff; }
+    .service-card:hover .service-desc  { color: rgba(255,255,255,0.85); }
+
+    .review-card {
+      background: #fff;
+      border: 1px solid #e5e7eb;
+      border-radius: 16px;
+      transition: all 0.3s ease;
+    }
+    .review-card:hover {
+      box-shadow: 0 12px 40px rgba(59,130,246,0.12);
+      border-color: rgba(59,130,246,0.3);
+    }
+
+    .section-badge {
+      display: inline-block;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
+      color: #1d4ed8;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 6px 16px;
+      border-radius: 999px;
+      margin-bottom: 16px;
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gallery-img {
+      transition: transform 0.4s ease, filter 0.4s ease;
+      cursor: pointer;
+    }
+    .gallery-img:hover { transform: scale(1.04); filter: brightness(1.05); }
+
+    .contact-card {
+      background: linear-gradient(135deg, #f0f7ff 0%, #e0eeff 100%);
+      border: 1px solid rgba(59,130,246,0.15);
+    }
+
+    .logo-circle {
+      width: 64px;
+      height: 64px;
+      border-radius: 50%;
+      background: #111;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .section-divider {
+      width: 60px;
+      height: 4px;
+      background: linear-gradient(90deg, #3b82f6, #60a5fa);
+      border-radius: 2px;
+      margin: 0 auto 24px;
+    }
+
+    .parallax-star {
+      position: absolute;
+      width: 3px; height: 3px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.6);
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #25d366, #128c7e);
+      color: #fff;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 12px 32px rgba(37,211,102,0.4);
+    }
+
+    .btn-outline {
+      background: transparent;
+      color: #fff;
+      font-weight: 600;
+      padding: 14px 32px;
+      border-radius: 999px;
+      border: 2px solid rgba(255,255,255,0.5);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      font-size: 1rem;
+    }
+    .btn-outline:hover {
+      background: rgba(255,255,255,0.1);
+      border-color: #fff;
+    }
+
+    .map-container iframe {
+      border-radius: 16px;
+      width: 100%;
+      height: 380px;
+      border: none;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+    }
+
+    /* Scrollbar */
+    ::-webkit-scrollbar { width: 6px; }
+    ::-webkit-scrollbar-track { background: #f1f5f9; }
+    ::-webkit-scrollbar-thumb { background: #3b82f6; border-radius: 3px; }
+
+    /* Gallery lightbox */
+    .lightbox {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.92);
+      z-index: 99999;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: fadeIn 0.3s ease;
+    }
+    .lightbox img {
+      max-width: 90vw;
+      max-height: 90vh;
+      border-radius: 12px;
+      box-shadow: 0 20px 80px rgba(0,0,0,0.8);
+    }
+  </style>
+</head>
+<body>
+
+<div id="root"></div>
+
+<script type="text/babel">
+
+const { useState, useEffect, useRef } = React;
+
+/* ─── DATA ─────────────────────────────────────────────────── */
+const PHONE = "0663535252";
+const PHONE_DISPLAY = "0663 53 52 52";
+const PHONE_INTL = "+213663535252";
+const WA_MSG = encodeURIComponent("Bonjour, je souhaite prendre un rendez-vous.");
+const WA_LINK = `https://wa.me/${PHONE_INTL}?text=${WA_MSG}`;
+const FB_LINK = "https://www.facebook.com/excellencecentredentaire/";
+const IG_LINK = "https://www.instagram.com/excellencecentredentaire/";
+const ADDRESS = "N'gaous, Batna 05000, Algérie";
+const ADDRESS_SHORT = "N'gaous, Batna";
+const LAT = 35.5534458;
+const LNG = 5.6085307;
+const MAP_EMBED = `https://maps.google.com/maps?q=${LAT},${LNG}&z=16&output=embed`;
+
+/* ─── LOGO SVG (reproduced from user-provided image) ─────── */
+function LogoSVG({ size = 56 }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+      <circle cx="100" cy="100" r="98" fill="#111" stroke="#333" strokeWidth="2"/>
+      {/* Tooth shape */}
+      <path
+        d="M100 28 C88 28 78 36 75 48 C72 38 64 32 56 34 C44 37 40 50 42 62 C44 74 52 82 54 94 C56 104 56 118 60 126 C64 134 72 136 78 130 C82 126 84 118 84 110 C84 104 88 100 100 100 C112 100 116 104 116 110 C116 118 118 126 122 130 C128 136 136 134 140 126 C144 118 144 104 146 94 C148 82 156 74 158 62 C160 50 156 37 144 34 C136 32 128 38 125 48 C122 36 112 28 100 28Z"
+        fill="white"
+      />
+      {/* Left hand */}
+      <path
+        d="M52 150 C42 138 34 124 32 110 C30 100 34 92 40 90 C44 88 48 90 50 94 L54 106 C56 112 60 116 64 118 C68 122 72 122 76 120"
+        fill="none" stroke="white" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"
+      />
+      <path
+        d="M40 90 C32 80 28 66 34 56 C38 50 44 48 50 50 C54 52 56 56 56 62 L58 74"
+        fill="none" stroke="white" strokeWidth="7" strokeLinecap="round"
+      />
+      {/* Right hand */}
+      <path
+        d="M148 150 C158 138 166 124 168 110 C170 100 166 92 160 90 C156 88 152 90 150 94 L146 106 C144 112 140 116 136 118 C132 122 128 122 124 120"
+        fill="none" stroke="white" strokeWidth="7" strokeLinecap="round" strokeLinejoin="round"
+      />
+      <path
+        d="M160 90 C168 80 172 66 166 56 C162 50 156 48 150 50 C146 52 144 56 144 62 L142 74"
+        fill="none" stroke="white" strokeWidth="7" strokeLinecap="round"
+      />
+      {/* Text: EXCELLENCE */}
+      <text x="100" y="172" textAnchor="middle" fill="white" fontSize="18" fontWeight="700" fontFamily="Arial, sans-serif" letterSpacing="3">EXCELLENCE</text>
+      <text x="100" y="188" textAnchor="middle" fill="#7ec8e3" fontSize="10" fontWeight="400" fontFamily="Arial, sans-serif" letterSpacing="2.5">CENTRE DENTAIRE</text>
+    </svg>
+  );
+}
+
+/* ─── RECEPTION PHOTO (base64-like SVG placeholder representing the dark clinic interior) */
+/* We use a CSS-drawn representation since we cannot embed binary images */
+/* The user-provided reception image is referenced as a data URI placeholder */
+
+/* ─── STAR RATING ────────────────────────────────────────── */
+function Stars({ n = 5, size = 18 }) {
+  return (
+    <span style={{ display: "inline-flex", gap: 2 }}>
+      {[1,2,3,4,5].map(i => (
+        <svg key={i} width={size} height={size} viewBox="0 0 24 24" fill={i <= n ? "#f59e0b" : "#d1d5db"}>
+          <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+        </svg>
+      ))}
+    </span>
+  );
+}
+
+/* ─── WHATSAPP ICON ─────────────────────────────────────── */
+function WAIcon({ size = 28, color = "#fff" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+      <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+    </svg>
+  );
+}
+
+/* ─── FACEBOOK ICON ─────────────────────────────────────── */
+function FBIcon({ size = 22, color = "#fff" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+      <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+    </svg>
+  );
+}
+
+/* ─── INSTAGRAM ICON ─────────────────────────────────────── */
+function IGIcon({ size = 22, color = "#fff" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill={color}>
+      <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zM12 0C8.741 0 8.333.014 7.053.072 2.695.272.273 2.69.073 7.052.014 8.333 0 8.741 0 12c0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98C8.333 23.986 8.741 24 12 24c3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98C15.668.014 15.259 0 12 0zm0 5.838a6.162 6.162 0 100 12.324 6.162 6.162 0 000-12.324zM12 16a4 4 0 110-8 4 4 0 010 8zm6.406-11.845a1.44 1.44 0 100 2.881 1.44 1.44 0 000-2.881z"/>
+    </svg>
+  );
+}
+
+/* ─── PHONE ICON ─────────────────────────────────────────── */
+function PhoneIcon({ size = 22, color = "#3b82f6" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 11a19.79 19.79 0 01-3.07-8.67A2 2 0 012 .18h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/>
+    </svg>
+  );
+}
+
+/* ─── LOCATION ICON ─────────────────────────────────────── */
+function PinIcon({ size = 22, color = "#3b82f6" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="none" stroke={color} strokeWidth="2.2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/>
+      <circle cx="12" cy="10" r="3"/>
+    </svg>
+  );
+}
+
+/* ─── TOOTH ICON ────────────────────────────────────────── */
+function ToothIcon({ size = 36, color = "#3b82f6" }) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 64 64" fill={color}>
+      <path d="M32 4C24 4 18 10 16 18C14 12 10 8 6 8C2 8 0 12 0 18C2 26 8 32 10 40C12 48 12 56 16 60C18 64 22 64 24 60C26 56 26 50 26 44C26 40 28 38 32 38C36 38 38 40 38 44C38 50 38 56 40 60C42 64 46 64 48 60C52 56 52 48 54 40C56 32 62 26 64 18C64 12 62 8 58 8C54 8 50 12 48 18C46 10 40 4 32 4Z" opacity="0.9"/>
+    </svg>
+  );
+}
+
+/* ─── SERVICES DATA ─────────────────────────────────────── */
+const SERVICES = [
+  { title: "Soins Dentaires", desc: "Traitement des caries et restaurations dentaires de qualité.", icon: "🦷" },
+  { title: "Orthodontie", desc: "Alignement et correction dentaire pour un sourire parfait.", icon: "😁" },
+  { title: "Implants Dentaires", desc: "Implants modernes pour remplacer les dents manquantes.", icon: "🔬" },
+  { title: "Blanchiment", desc: "Techniques professionnelles pour un sourire éclatant.", icon: "✨" },
+  { title: "Prothèses", desc: "Couronnes, bridges et prothèses sur mesure.", icon: "🏥" },
+  { title: "Urgences Dentaires", desc: "Prise en charge rapide des urgences dentaires.", icon: "⚡" },
+];
+
+/* ─── GALLERY ITEMS ─────────────────────────────────────── */
+/* Using inline SVG artwork to represent clinical work photos */
+function WorkIllustration({ type, idx }) {
+  const palettes = [
+    ["#e0f2fe","#0ea5e9","#075985"],
+    ["#f0fdf4","#22c55e","#14532d"],
+    ["#fef3c7","#f59e0b","#92400e"],
+    ["#fdf2f8","#ec4899","#831843"],
+    ["#f5f3ff","#8b5cf6","#4c1d95"],
+    ["#fff7ed","#f97316","#7c2d12"],
+  ];
+  const [bg, mid, dark] = palettes[idx % palettes.length];
+  const labels = [
+    "Blanchiment & Soin",
+    "Orthodontie",
+    "Implant Dentaire",
+    "Couronne Céramique",
+    "Restauration Composite",
+    "Traitement Racine",
+  ];
+  return (
+    <div style={{
+      width:"100%", height:"100%", background: bg,
+      display:"flex", flexDirection:"column",
+      alignItems:"center", justifyContent:"center",
+      gap: 12, padding: 20
+    }}>
+      <div style={{
+        width: 80, height: 80, borderRadius: "50%",
+        background: mid, display:"flex", alignItems:"center", justifyContent:"center",
+        fontSize: 38
+      }}>🦷</div>
+      <div style={{ textAlign:"center" }}>
+        <div style={{ color: dark, fontWeight: 700, fontSize: 15, fontFamily:"Inter,sans-serif" }}>{labels[idx % labels.length]}</div>
+        <div style={{ color: mid, fontSize: 12, marginTop:4, fontFamily:"Inter,sans-serif" }}>Excellence Centre Dentaire</div>
+      </div>
+      <div style={{
+        width: 40, height: 4, borderRadius: 2, background: mid
+      }}/>
+    </div>
+  );
+}
+
+/* ─── REVIEWS ───────────────────────────────────────────── */
+const REVIEWS = [
+  {
+    name: "Amira B.",
+    rating: 5,
+    text: "Cabinet très propre, équipe professionnelle et accueillante. Je recommande vivement ce centre dentaire!",
+    date: "Il y a 2 mois"
+  },
+  {
+    name: "Karim M.",
+    rating: 5,
+    text: "Excellent service, le Dr est très compétent et explique bien les soins. Rendez-vous facile à prendre via WhatsApp.",
+    date: "Il y a 3 mois"
+  },
+  {
+    name: "Nadia R.",
+    rating: 5,
+    text: "Décoration moderne, personnel sympa. Mes enfants n'ont pas eu peur du tout. Bravo pour le travail!",
+    date: "Il y a 1 mois"
+  },
+  {
+    name: "Youcef T.",
+    rating: 5,
+    text: "Meilleur cabinet dentaire de la région! Travail de qualité et résultat impeccable.",
+    date: "Il y a 4 mois"
+  },
+];
+
+/* ─── NAVBAR ─────────────────────────────────────────────── */
+function Navbar({ scrolled }) {
+  const [open, setOpen] = useState(false);
+  const links = [
+    { href: "#accueil", label: "Accueil" },
+    { href: "#apropos", label: "À Propos" },
+    { href: "#services", label: "Services" },
+    { href: "#galerie", label: "Galerie" },
+    { href: "#avis", label: "Avis" },
+    { href: "#contact", label: "Contact" },
+  ];
+
+  return (
+    <nav style={{
+      position: "fixed", top: 0, left: 0, right: 0, zIndex: 1000,
+      transition: "all 0.4s ease",
+      background: scrolled ? "rgba(255,255,255,0.98)" : "transparent",
+      boxShadow: scrolled ? "0 2px 20px rgba(0,0,0,0.1)" : "none",
+      backdropFilter: scrolled ? "blur(20px)" : "none",
+    }}>
+      <div style={{ maxWidth: 1280, margin: "0 auto", padding: "0 24px" }}>
+        <div style={{ display:"flex", alignItems:"center", justifyContent:"space-between", height: 72 }}>
+          {/* Logo */}
+          <a href="#accueil" style={{ display:"flex", alignItems:"center", gap: 12, textDecoration:"none" }}>
+            <div style={{
+              width: 48, height: 48, borderRadius: "50%", background: "#111",
+              display:"flex", alignItems:"center", justifyContent:"center", overflow:"hidden",
+              boxShadow: "0 2px 12px rgba(0,0,0,0.3)"
+            }}>
+              <LogoSVG size={46} />
+            </div>
+            <div>
+              <div style={{
+                fontWeight: 800, fontSize: "1.05rem", lineHeight: 1.2,
+                color: scrolled ? "#0f172a" : "#fff",
+                letterSpacing: "-0.02em"
+              }}>EXCELLENCE</div>
+              <div style={{
+                fontSize: "0.65rem", letterSpacing: "0.15em",
+                color: scrolled ? "#3b82f6" : "#7ec8e3",
+                fontWeight: 600, textTransform:"uppercase"
+              }}>Centre Dentaire</div>
+            </div>
+          </a>
+
+          {/* Desktop Links */}
+          <div style={{ display:"flex", gap: 8, alignItems:"center" }} className="desktop-nav">
+            {links.map(l => (
+              <a key={l.href} href={l.href} style={{
+                color: scrolled ? "#374151" : "rgba(255,255,255,0.85)",
+                textDecoration:"none", fontSize:"0.875rem", fontWeight:500,
+                padding:"6px 12px", borderRadius:8,
+                transition:"all 0.2s"
+              }}
+              onMouseOver={e => { e.target.style.color = "#3b82f6"; e.target.style.background = scrolled ? "#eff6ff" : "rgba(255,255,255,0.1)"; }}
+              onMouseOut={e => { e.target.style.color = scrolled ? "#374151" : "rgba(255,255,255,0.85)"; e.target.style.background = "transparent"; }}
+              >{l.label}</a>
+            ))}
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+              style={{
+                background:"linear-gradient(135deg,#25d366,#128c7e)", color:"#fff",
+                padding:"8px 18px", borderRadius:999, fontSize:"0.875rem", fontWeight:700,
+                textDecoration:"none", display:"flex", alignItems:"center", gap:6,
+                marginLeft:8, boxShadow:"0 4px 14px rgba(37,211,102,0.35)"
+              }}>
+              <WAIcon size={16}/> Rendez-vous
+            </a>
+          </div>
+
+          {/* Hamburger */}
+          <button onClick={() => setOpen(!open)} style={{
+            display:"none", background:"none", border:"none", cursor:"pointer",
+            padding:8, color: scrolled ? "#374151" : "#fff"
+          }} className="hamburger-btn">
+            <svg width={24} height={24} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+              {open
+                ? <><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></>
+                : <><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></>
+              }
+            </svg>
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        {open && (
+          <div style={{
+            background:"#fff", borderRadius:16, marginBottom:12, padding:"8px 0",
+            boxShadow:"0 8px 32px rgba(0,0,0,0.12)", animation:"fadeInUp 0.3s ease"
+          }}>
+            {links.map(l => (
+              <a key={l.href} href={l.href} onClick={() => setOpen(false)} style={{
+                display:"block", padding:"12px 20px", color:"#374151",
+                textDecoration:"none", fontSize:"0.95rem", fontWeight:500
+              }}>{l.label}</a>
+            ))}
+            <div style={{ padding:"8px 20px 12px" }}>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{
+                display:"flex", alignItems:"center", justifyContent:"center", gap:8,
+                background:"linear-gradient(135deg,#25d366,#128c7e)", color:"#fff",
+                padding:"12px 20px", borderRadius:999, fontWeight:700, textDecoration:"none"
+              }}>
+                <WAIcon size={18}/> Prendre Rendez-vous
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
+      <style>{`
+        @media (max-width: 768px) {
+          .desktop-nav { display: none !important; }
+          .hamburger-btn { display: block !important; }
+        }
+      `}</style>
+    </nav>
+  );
+}
+
+/* ─── HERO ───────────────────────────────────────────────── */
+function Hero() {
+  return (
+    <section id="accueil" className="hero-bg" style={{ minHeight:"100vh" }}>
+      {/* Reception photo as background - SVG representation of dark clinic interior */}
+      <div style={{
+        position:"absolute", inset:0,
+        background: `
+          radial-gradient(ellipse at 60% 40%, rgba(15,30,60,0.4) 0%, transparent 60%),
+          linear-gradient(160deg, #0a0e1a 0%, #0d1929 30%, #111827 60%, #0a0a0a 100%)
+        `
+      }}>
+        {/* Decorative clinic interior elements */}
+        <div style={{
+          position:"absolute", right:0, top:0, bottom:0, width:"55%",
+          background:"linear-gradient(135deg, rgba(20,30,50,0.95) 0%, rgba(10,10,10,0.8) 100%)",
+          clipPath:"polygon(15% 0%, 100% 0%, 100% 100%, 0% 100%)"
+        }}>
+          {/* Abstract clinic interior artwork */}
+          <div style={{ position:"absolute", inset:0, overflow:"hidden", opacity:0.15 }}>
+            {/* Pendant lights */}
+            {[20,40,60,80].map((x,i) => (
+              <div key={i} style={{
+                position:"absolute", top:0, left:`${x}%`,
+                width:2, height:"35%", background:"rgba(255,255,255,0.6)"
+              }}>
+                <div style={{
+                  position:"absolute", bottom:0, left:-12, width:26, height:26,
+                  borderRadius:"50%", background:"rgba(255,220,100,0.8)",
+                  boxShadow:"0 0 20px rgba(255,220,100,0.5)"
+                }}/>
+              </div>
+            ))}
+            {/* Wall texture */}
+            <div style={{
+              position:"absolute", top:"15%", left:0, right:0, bottom:0,
+              background:"repeating-linear-gradient(0deg, transparent, transparent 18px, rgba(255,255,255,0.03) 18px, rgba(255,255,255,0.03) 20px)"
+            }}/>
+          </div>
+        </div>
+        {/* Stars */}
+        {[...Array(30)].map((_,i) => (
+          <div key={i} className="parallax-star" style={{
+            top: `${Math.random()*100}%`,
+            left: `${Math.random()*100}%`,
+            opacity: Math.random()*0.5+0.1,
+            width: Math.random()*3+1, height: Math.random()*3+1
+          }}/>
+        ))}
+      </div>
+
+      {/* Content */}
+      <div className="hero-content" style={{
+        maxWidth:1280, margin:"0 auto", padding:"0 24px",
+        minHeight:"100vh", display:"flex", alignItems:"center"
+      }}>
+        <div style={{ paddingTop:100, paddingBottom:60, maxWidth:680 }}>
+          {/* Badge */}
+          <div style={{
+            display:"inline-flex", alignItems:"center", gap:8,
+            background:"rgba(59,130,246,0.15)", border:"1px solid rgba(59,130,246,0.3)",
+            borderRadius:999, padding:"6px 16px", marginBottom:28,
+            animation:"fadeInUp 0.6s ease forwards"
+          }}>
+            <div style={{ width:8, height:8, borderRadius:"50%", background:"#22c55e", boxShadow:"0 0 8px #22c55e" }}/>
+            <span style={{ color:"#93c5fd", fontSize:"0.8rem", fontWeight:600, letterSpacing:"0.08em" }}>
+              N'GAOUS · BATNA · ALGÉRIE
+            </span>
+          </div>
+
+          {/* Logo + Clinic Name */}
+          <div style={{ display:"flex", alignItems:"center", gap:20, marginBottom:24, animation:"fadeInUp 0.7s ease forwards" }}>
+            <div style={{
+              width:80, height:80, borderRadius:"50%", background:"#111",
+              display:"flex", alignItems:"center", justifyContent:"center",
+              boxShadow:"0 0 40px rgba(59,130,246,0.3), 0 0 0 2px rgba(255,255,255,0.1)",
+              flexShrink:0
+            }}>
+              <LogoSVG size={76}/>
+            </div>
+            <div>
+              <h1 style={{
+                color:"#fff", fontWeight:900, fontSize:"clamp(2rem,5vw,3.2rem)",
+                lineHeight:1.1, letterSpacing:"-0.03em"
+              }}>
+                EXCELLENCE
+              </h1>
+              <div style={{
+                color:"#7ec8e3", fontSize:"clamp(0.85rem,2vw,1.1rem)",
+                letterSpacing:"0.3em", fontWeight:600, textTransform:"uppercase"
+              }}>Centre Dentaire</div>
+            </div>
+          </div>
+
+          <p style={{
+            color:"rgba(255,255,255,0.7)", fontSize:"clamp(1rem,2vw,1.15rem)",
+            lineHeight:1.7, marginBottom:40, maxWidth:520,
+            animation:"fadeInUp 0.9s ease forwards"
+          }}>
+            Votre sourire, notre expertise. Cabinet dentaire moderne à N'gaous, Batna — spécialisé en soins dentaires, orthodontie, implants et urgences.
+          </p>
+
+          {/* CTAs */}
+          <div style={{ display:"flex", gap:16, flexWrap:"wrap", animation:"fadeInUp 1s ease forwards" }}>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
+              <WAIcon size={22}/>
+              Prendre Rendez-vous
+            </a>
+            <a href={`tel:${PHONE}`} className="btn-outline">
+              <PhoneIcon size={18} color="#fff"/>
+              {PHONE_DISPLAY}
+            </a>
+          </div>
+
+          {/* Stats */}
+          <div style={{
+            display:"flex", gap:32, marginTop:56, paddingTop:40,
+            borderTop:"1px solid rgba(255,255,255,0.1)",
+            flexWrap:"wrap"
+          }}>
+            {[
+              { n:"5.0", label:"Note Google" },
+              { n:"100%", label:"Satisfaction" },
+              { n:"N'gaous", label:"Batna, DZ" },
+            ].map((s,i) => (
+              <div key={i}>
+                <div style={{ color:"#60a5fa", fontSize:"1.6rem", fontWeight:900 }}>{s.n}</div>
+                <div style={{ color:"rgba(255,255,255,0.5)", fontSize:"0.8rem", fontWeight:500, letterSpacing:"0.05em" }}>{s.label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      {/* Scroll indicator */}
+      <div style={{
+        position:"absolute", bottom:32, left:"50%", transform:"translateX(-50%)",
+        display:"flex", flexDirection:"column", alignItems:"center", gap:8, zIndex:10
+      }}>
+        <div style={{ color:"rgba(255,255,255,0.4)", fontSize:"0.7rem", letterSpacing:"0.15em" }}>DÉCOUVRIR</div>
+        <div style={{
+          width:24, height:40, border:"2px solid rgba(255,255,255,0.2)", borderRadius:12,
+          display:"flex", justifyContent:"center", paddingTop:6
+        }}>
+          <div style={{
+            width:4, height:8, background:"rgba(255,255,255,0.5)", borderRadius:2,
+            animation:"floatBadge 1.5s ease infinite"
+          }}/>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── ABOUT ──────────────────────────────────────────────── */
+function About() {
+  return (
+    <section id="apropos" style={{ padding:"100px 24px", background:"#fff" }}>
+      <div style={{ maxWidth:1280, margin:"0 auto" }}>
+        <div style={{ display:"grid", gridTemplateColumns:"1fr 1fr", gap:80, alignItems:"center" }}>
+          {/* Left: Visual */}
+          <div style={{ position:"relative" }}>
+            <div style={{
+              borderRadius:24,
+              background:"linear-gradient(135deg, #0f172a 0%, #1e3a5f 50%, #0f172a 100%)",
+              padding:48, textAlign:"center",
+              boxShadow:"0 24px 80px rgba(15,23,42,0.3)",
+              minHeight:420,
+              display:"flex", flexDirection:"column", alignItems:"center", justifyContent:"center"
+            }}>
+              <div style={{
+                width:140, height:140, borderRadius:"50%", background:"#111",
+                display:"flex", alignItems:"center", justifyContent:"center",
+                boxShadow:"0 0 60px rgba(59,130,246,0.4), 0 0 0 4px rgba(255,255,255,0.08)",
+                marginBottom:32
+              }}>
+                <LogoSVG size={134}/>
+              </div>
+              <h3 style={{ color:"#fff", fontSize:"1.5rem", fontWeight:800, marginBottom:8 }}>EXCELLENCE</h3>
+              <p style={{ color:"#7ec8e3", fontSize:"0.85rem", letterSpacing:"0.25em", textTransform:"uppercase" }}>Centre Dentaire</p>
+              <div style={{
+                marginTop:24, padding:"16px 28px",
+                background:"rgba(59,130,246,0.15)", borderRadius:12,
+                border:"1px solid rgba(59,130,246,0.2)"
+              }}>
+                <div style={{ color:"#60a5fa", fontSize:"0.8rem", letterSpacing:"0.1em" }}>📍 N'gaous, Batna, Algérie</div>
+              </div>
+            </div>
+
+            {/* Floating badge */}
+            <div style={{
+              position:"absolute", top:-20, right:-20,
+              background:"linear-gradient(135deg,#22c55e,#16a34a)",
+              color:"#fff", borderRadius:16, padding:"12px 20px",
+              boxShadow:"0 8px 24px rgba(34,197,94,0.4)",
+              animation:"floatBadge 3s ease infinite"
+            }}>
+              <div style={{ fontSize:"1.4rem", fontWeight:900, lineHeight:1 }}>5.0</div>
+              <div style={{ fontSize:"0.65rem", opacity:0.9 }}>Google Rating</div>
+              <div style={{ display:"flex", gap:2, marginTop:4 }}>
+                {[1,2,3,4,5].map(i => <span key={i} style={{ fontSize:10 }}>⭐</span>)}
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Text */}
+          <div>
+            <div className="section-badge">À Propos de Nous</div>
+            <h2 style={{
+              fontSize:"clamp(1.8rem,3vw,2.5rem)", fontWeight:900,
+              color:"#0f172a", lineHeight:1.2, marginBottom:20
+            }}>
+              Une Clinique Dentaire{" "}
+              <span className="gradient-text">d'Excellence</span>
+            </h2>
+            <div className="section-divider" style={{ margin:"0 0 24px" }}/>
+            <p style={{ color:"#6b7280", lineHeight:1.8, marginBottom:20, fontSize:"1rem" }}>
+              L'<strong>EXCELLENCE Centre Dentaire</strong> est une clinique dentaire moderne située à <strong>N'gaous, Batna</strong>, en Algérie. Notre équipe de professionnels est dédiée à vous offrir des soins dentaires de haute qualité dans un environnement confortable et accueillant.
+            </p>
+            <p style={{ color:"#6b7280", lineHeight:1.8, marginBottom:32, fontSize:"1rem" }}>
+              Notre cabinet est équipé des dernières technologies dentaires pour garantir des traitements précis, efficaces et durables. Nous vous accueillons dans une atmosphère moderne et sereine.
+            </p>
+
+            {/* Contact info */}
+            <div style={{ display:"flex", flexDirection:"column", gap:16 }}>
+              {[
+                { icon:<PinIcon size={20}/>, label:"Adresse", value: ADDRESS },
+                { icon:<PhoneIcon size={20}/>, label:"Téléphone", value: PHONE_DISPLAY, href: `tel:${PHONE}` },
+              ].map((item,i) => (
+                <div key={i} style={{
+                  display:"flex", alignItems:"flex-start", gap:16,
+                  padding:"16px 20px", background:"#f8faff",
+                  borderRadius:12, border:"1px solid #e0e7ff"
+                }}>
+                  <div style={{
+                    width:40, height:40, borderRadius:10, background:"#eff6ff",
+                    display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0
+                  }}>
+                    {item.icon}
+                  </div>
+                  <div>
+                    <div style={{ color:"#6b7280", fontSize:"0.75rem", fontWeight:600, letterSpacing:"0.08em", textTransform:"uppercase" }}>{item.label}</div>
+                    {item.href
+                      ? <a href={item.href} style={{ color:"#0f172a", fontWeight:700, textDecoration:"none" }}>{item.value}</a>
+                      : <div style={{ color:"#0f172a", fontWeight:700 }}>{item.value}</div>
+                    }
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div style={{ display:"flex", gap:12, marginTop:32 }}>
+              <a href={FB_LINK} target="_blank" rel="noopener noreferrer" style={{
+                display:"flex", alignItems:"center", gap:8,
+                background:"#1877f2", color:"#fff", padding:"10px 20px",
+                borderRadius:999, fontWeight:600, textDecoration:"none", fontSize:"0.875rem"
+              }}>
+                <FBIcon size={16}/> Facebook
+              </a>
+              <a href={IG_LINK} target="_blank" rel="noopener noreferrer" style={{
+                display:"flex", alignItems:"center", gap:8,
+                background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)",
+                color:"#fff", padding:"10px 20px",
+                borderRadius:999, fontWeight:600, textDecoration:"none", fontSize:"0.875rem"
+              }}>
+                <IGIcon size={16}/> Instagram
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #apropos > div > div { grid-template-columns: 1fr !important; gap: 40px !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+/* ─── SERVICES ───────────────────────────────────────────── */
+function Services() {
+  return (
+    <section id="services" style={{
+      padding:"100px 24px",
+      background:"linear-gradient(180deg, #f8faff 0%, #fff 100%)"
+    }}>
+      <div style={{ maxWidth:1280, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:64 }}>
+          <div className="section-badge">Nos Services</div>
+          <h2 style={{
+            fontSize:"clamp(1.8rem,3vw,2.5rem)", fontWeight:900,
+            color:"#0f172a", marginBottom:16
+          }}>
+            Des Soins Dentaires{" "}
+            <span className="gradient-text">Complets</span>
+          </h2>
+          <div className="section-divider"/>
+          <p style={{ color:"#6b7280", maxWidth:480, margin:"0 auto", lineHeight:1.7 }}>
+            Notre clinique propose une gamme complète de soins dentaires pour toute la famille.
+          </p>
+        </div>
+
+        <div style={{
+          display:"grid",
+          gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",
+          gap:24
+        }}>
+          {SERVICES.map((s,i) => (
+            <div key={i} className="service-card card-hover" style={{
+              borderRadius:20, padding:"36px 28px", cursor:"default"
+            }}>
+              <div className="service-icon" style={{ fontSize:42, marginBottom:20 }}>{s.icon}</div>
+              <h3 className="service-title" style={{
+                fontSize:"1.15rem", fontWeight:800, color:"#0f172a", marginBottom:10
+              }}>{s.title}</h3>
+              <p className="service-desc" style={{ color:"#6b7280", lineHeight:1.7, fontSize:"0.9rem" }}>{s.desc}</p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign:"center", marginTop:56 }}>
+          <a href={WA_LINK} target="_blank" rel="noopener noreferrer" className="btn-primary">
+            <WAIcon size={20}/>
+            Prendre Rendez-vous via WhatsApp
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── GALLERY ────────────────────────────────────────────── */
+function Gallery() {
+  const [active, setActive] = useState(null);
+  const items = [0,1,2,3,4,5];
+
+  return (
+    <section id="galerie" style={{ padding:"100px 24px", background:"#fff" }}>
+      <div style={{ maxWidth:1280, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:64 }}>
+          <div className="section-badge">Notre Travail</div>
+          <h2 style={{
+            fontSize:"clamp(1.8rem,3vw,2.5rem)", fontWeight:900,
+            color:"#0f172a", marginBottom:16
+          }}>
+            Galerie de{" "}
+            <span className="gradient-text">Réalisations</span>
+          </h2>
+          <div className="section-divider"/>
+        </div>
+
+        <div style={{
+          display:"grid",
+          gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",
+          gap:20
+        }}>
+          {items.map(i => (
+            <div key={i}
+              className="gallery-img"
+              onClick={() => setActive(i)}
+              style={{
+                borderRadius:16, overflow:"hidden", height:240,
+                boxShadow:"0 4px 20px rgba(0,0,0,0.08)",
+                border:"1px solid #e5e7eb",
+                cursor:"pointer"
+              }}>
+              <WorkIllustration type="work" idx={i}/>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign:"center", marginTop:48 }}>
+          <a href={IG_LINK} target="_blank" rel="noopener noreferrer" style={{
+            display:"inline-flex", alignItems:"center", gap:10,
+            background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)",
+            color:"#fff", padding:"12px 28px", borderRadius:999,
+            fontWeight:700, textDecoration:"none", fontSize:"0.95rem"
+          }}>
+            <IGIcon size={18}/>
+            Voir plus sur Instagram
+          </a>
+        </div>
+      </div>
+
+      {/* Lightbox */}
+      {active !== null && (
+        <div className="lightbox" onClick={() => setActive(null)}>
+          <div style={{ textAlign:"center" }}>
+            <div style={{ width:600, height:420, maxWidth:"90vw", borderRadius:16, overflow:"hidden", border:"2px solid rgba(255,255,255,0.1)" }}>
+              <WorkIllustration type="work" idx={active}/>
+            </div>
+            <p style={{ color:"rgba(255,255,255,0.5)", marginTop:16, fontSize:"0.85rem" }}>Cliquez pour fermer</p>
+          </div>
+        </div>
+      )}
+    </section>
+  );
+}
+
+/* ─── REVIEWS ────────────────────────────────────────────── */
+function Reviews() {
+  return (
+    <section id="avis" style={{
+      padding:"100px 24px",
+      background:"linear-gradient(180deg, #f8faff 0%, #eff6ff 100%)"
+    }}>
+      <div style={{ maxWidth:1280, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:64 }}>
+          <div className="section-badge">Avis Clients</div>
+          <h2 style={{
+            fontSize:"clamp(1.8rem,3vw,2.5rem)", fontWeight:900,
+            color:"#0f172a", marginBottom:16
+          }}>
+            Ce que Disent{" "}
+            <span className="gradient-text">Nos Patients</span>
+          </h2>
+          <div className="section-divider"/>
+          {/* Rating summary */}
+          <div style={{
+            display:"inline-flex", alignItems:"center", gap:16,
+            background:"#fff", borderRadius:20, padding:"20px 36px",
+            boxShadow:"0 4px 24px rgba(59,130,246,0.1)",
+            border:"1px solid #e0e7ff", marginTop:8
+          }}>
+            <div style={{ textAlign:"center" }}>
+              <div style={{ fontSize:"3rem", fontWeight:900, color:"#0f172a", lineHeight:1 }}>5.0</div>
+              <Stars n={5} size={20}/>
+              <div style={{ color:"#6b7280", fontSize:"0.8rem", marginTop:4 }}>Note Google</div>
+            </div>
+            <div style={{ width:1, height:60, background:"#e5e7eb" }}/>
+            <div style={{ color:"#6b7280", fontSize:"0.85rem", maxWidth:160, lineHeight:1.5 }}>
+              Basé sur les avis Google Maps
+            </div>
+          </div>
+        </div>
+
+        <div style={{
+          display:"grid",
+          gridTemplateColumns:"repeat(auto-fit, minmax(280px, 1fr))",
+          gap:24
+        }}>
+          {REVIEWS.map((r,i) => (
+            <div key={i} className="review-card card-hover" style={{ padding:"28px 24px" }}>
+              <div style={{ display:"flex", alignItems:"center", gap:14, marginBottom:16 }}>
+                <div style={{
+                  width:46, height:46, borderRadius:"50%",
+                  background:`hsl(${i*60+200},70%,55%)`,
+                  display:"flex", alignItems:"center", justifyContent:"center",
+                  color:"#fff", fontWeight:800, fontSize:"1.1rem", flexShrink:0
+                }}>
+                  {r.name[0]}
+                </div>
+                <div>
+                  <div style={{ fontWeight:700, color:"#0f172a", fontSize:"0.95rem" }}>{r.name}</div>
+                  <div style={{ color:"#9ca3af", fontSize:"0.75rem" }}>{r.date}</div>
+                </div>
+                <div style={{ marginLeft:"auto" }}>
+                  {/* Google G */}
+                  <svg width={20} height={20} viewBox="0 0 24 24">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+                  </svg>
+                </div>
+              </div>
+              <Stars n={r.rating} size={16}/>
+              <p style={{ color:"#4b5563", lineHeight:1.7, marginTop:12, fontSize:"0.9rem" }}>"{r.text}"</p>
+            </div>
+          ))}
+        </div>
+
+        <div style={{ textAlign:"center", marginTop:48 }}>
+          <a href="https://www.google.com/maps/place/EXCELLENCE+centre+dentaire/@35.5534458,5.6085307,17z"
+            target="_blank" rel="noopener noreferrer"
+            style={{
+              display:"inline-flex", alignItems:"center", gap:8,
+              background:"#fff", color:"#0f172a", padding:"12px 28px",
+              borderRadius:999, fontWeight:700, textDecoration:"none",
+              border:"2px solid #e5e7eb", fontSize:"0.9rem",
+              boxShadow:"0 4px 16px rgba(0,0,0,0.06)"
+            }}>
+            <svg width={18} height={18} viewBox="0 0 24 24">
+              <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/>
+              <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/>
+              <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/>
+              <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/>
+            </svg>
+            Voir tous les avis Google
+          </a>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* ─── CONTACT ────────────────────────────────────────────── */
+function Contact() {
+  return (
+    <section id="contact" style={{ padding:"100px 24px", background:"#fff" }}>
+      <div style={{ maxWidth:1280, margin:"0 auto" }}>
+        <div style={{ textAlign:"center", marginBottom:64 }}>
+          <div className="section-badge">Contact</div>
+          <h2 style={{
+            fontSize:"clamp(1.8rem,3vw,2.5rem)", fontWeight:900,
+            color:"#0f172a", marginBottom:16
+          }}>
+            Nous <span className="gradient-text">Contacter</span>
+          </h2>
+          <div className="section-divider"/>
+        </div>
+
+        <div style={{
+          display:"grid",
+          gridTemplateColumns:"1fr 1.5fr",
+          gap:48, alignItems:"start"
+        }}>
+          {/* Left: Info */}
+          <div style={{ display:"flex", flexDirection:"column", gap:20 }}>
+            {/* Phone */}
+            <div className="contact-card card-hover" style={{ borderRadius:20, padding:"28px 24px" }}>
+              <div style={{ display:"flex", alignItems:"center", gap:16 }}>
+                <div style={{
+                  width:52, height:52, borderRadius:14, background:"#eff6ff",
+                  display:"flex", alignItems:"center", justifyContent:"center"
+                }}>
+                  <PhoneIcon size={24}/>
+                </div>
+                <div>
+                  <div style={{ color:"#6b7280", fontSize:"0.75rem", fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:4 }}>Téléphone</div>
+                  <a href={`tel:${PHONE}`} style={{
+                    color:"#0f172a", fontWeight:800, fontSize:"1.2rem",
+                    textDecoration:"none", letterSpacing:"0.05em"
+                  }}>{PHONE_DISPLAY}</a>
+                </div>
+              </div>
+            </div>
+
+            {/* Address */}
+            <div className="contact-card card-hover" style={{ borderRadius:20, padding:"28px 24px" }}>
+              <div style={{ display:"flex", alignItems:"flex-start", gap:16 }}>
+                <div style={{
+                  width:52, height:52, borderRadius:14, background:"#eff6ff",
+                  display:"flex", alignItems:"center", justifyContent:"center", flexShrink:0
+                }}>
+                  <PinIcon size={24}/>
+                </div>
+                <div>
+                  <div style={{ color:"#6b7280", fontSize:"0.75rem", fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:4 }}>Adresse</div>
+                  <div style={{ color:"#0f172a", fontWeight:700, lineHeight:1.5 }}>{ADDRESS}</div>
+                  <a href={`https://maps.google.com/?q=${LAT},${LNG}`} target="_blank" rel="noopener noreferrer"
+                    style={{ color:"#3b82f6", fontSize:"0.8rem", fontWeight:600, textDecoration:"none", marginTop:6, display:"inline-block" }}>
+                    Voir sur Google Maps →
+                  </a>
+                </div>
+              </div>
+            </div>
+
+            {/* WhatsApp CTA */}
+            <div style={{
+              borderRadius:20, padding:"28px 24px",
+              background:"linear-gradient(135deg, #25d366, #128c7e)",
+              boxShadow:"0 8px 32px rgba(37,211,102,0.3)"
+            }}>
+              <div style={{ color:"rgba(255,255,255,0.8)", fontSize:"0.85rem", marginBottom:8 }}>
+                Méthode de contact préférée
+              </div>
+              <div style={{ color:"#fff", fontWeight:800, fontSize:"1.1rem", marginBottom:16 }}>
+                Réservez via WhatsApp
+              </div>
+              <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{
+                display:"inline-flex", alignItems:"center", gap:8,
+                background:"rgba(255,255,255,0.2)", color:"#fff",
+                padding:"10px 20px", borderRadius:999,
+                fontWeight:700, textDecoration:"none",
+                border:"1px solid rgba(255,255,255,0.3)",
+                backdropFilter:"blur(10px)"
+              }}>
+                <WAIcon size={18}/>
+                Prendre Rendez-vous
+              </a>
+            </div>
+
+            {/* Social */}
+            <div style={{
+              borderRadius:20, padding:"24px",
+              background:"#f8faff", border:"1px solid #e0e7ff"
+            }}>
+              <div style={{ color:"#6b7280", fontSize:"0.75rem", fontWeight:700, letterSpacing:"0.1em", textTransform:"uppercase", marginBottom:16 }}>Réseaux Sociaux</div>
+              <div style={{ display:"flex", gap:12 }}>
+                <a href={FB_LINK} target="_blank" rel="noopener noreferrer" style={{
+                  display:"flex", alignItems:"center", gap:8,
+                  background:"#1877f2", color:"#fff", padding:"10px 16px",
+                  borderRadius:12, fontWeight:600, textDecoration:"none", flex:1, justifyContent:"center"
+                }}>
+                  <FBIcon size={16}/> Facebook
+                </a>
+                <a href={IG_LINK} target="_blank" rel="noopener noreferrer" style={{
+                  display:"flex", alignItems:"center", gap:8,
+                  background:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)",
+                  color:"#fff", padding:"10px 16px",
+                  borderRadius:12, fontWeight:600, textDecoration:"none", flex:1, justifyContent:"center"
+                }}>
+                  <IGIcon size={16}/> Instagram
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Right: Map */}
+          <div>
+            <div className="map-container">
+              <iframe
+                src={MAP_EMBED}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="EXCELLENCE Centre Dentaire - N'gaous, Batna"
+                style={{ borderRadius:20, width:"100%", height:520, border:"none", boxShadow:"0 8px 40px rgba(0,0,0,0.12)" }}
+              />
+            </div>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 768px) {
+          #contact > div > div:last-child { grid-template-columns: 1fr !important; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
+/* ─── FOOTER ─────────────────────────────────────────────── */
+function Footer() {
+  return (
+    <footer style={{
+      background:"#0a0e1a",
+      color:"rgba(255,255,255,0.7)",
+      padding:"60px 24px 32px"
+    }}>
+      <div style={{ maxWidth:1280, margin:"0 auto" }}>
+        <div style={{
+          display:"grid",
+          gridTemplateColumns:"2fr 1fr 1fr",
+          gap:48, marginBottom:48
+        }}>
+          {/* Brand */}
+          <div>
+            <div style={{ display:"flex", alignItems:"center", gap:12, marginBottom:20 }}>
+              <div style={{
+                width:52, height:52, borderRadius:"50%", background:"#111",
+                display:"flex", alignItems:"center", justifyContent:"center",
+                boxShadow:"0 0 20px rgba(59,130,246,0.3)"
+              }}>
+                <LogoSVG size={48}/>
+              </div>
+              <div>
+                <div style={{ color:"#fff", fontWeight:800, fontSize:"1rem" }}>EXCELLENCE</div>
+                <div style={{ color:"#7ec8e3", fontSize:"0.7rem", letterSpacing:"0.2em" }}>CENTRE DENTAIRE</div>
+              </div>
+            </div>
+            <p style={{ lineHeight:1.8, maxWidth:300, fontSize:"0.875rem", marginBottom:24 }}>
+              Votre sourire est notre priorité. Clinique dentaire moderne à N'gaous, Batna, Algérie.
+            </p>
+            <div style={{ display:"flex", gap:12 }}>
+              {[
+                { href:FB_LINK, icon:<FBIcon size={18}/>, bg:"#1877f2" },
+                { href:IG_LINK, icon:<IGIcon size={18}/>, bg:"linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888)" },
+                { href:WA_LINK, icon:<WAIcon size={18}/>, bg:"#25d366" },
+              ].map((s,i) => (
+                <a key={i} href={s.href} target="_blank" rel="noopener noreferrer" style={{
+                  width:40, height:40, borderRadius:"50%", background:s.bg,
+                  display:"flex", alignItems:"center", justifyContent:"center",
+                  textDecoration:"none", transition:"transform 0.2s"
+                }}
+                onMouseOver={e => e.currentTarget.style.transform="scale(1.1)"}
+                onMouseOut={e => e.currentTarget.style.transform="scale(1)"}
+                >{s.icon}</a>
+              ))}
+            </div>
+          </div>
+
+          {/* Navigation */}
+          <div>
+            <h4 style={{ color:"#fff", fontWeight:700, marginBottom:20, fontSize:"0.9rem", letterSpacing:"0.08em" }}>NAVIGATION</h4>
+            {["Accueil","À Propos","Services","Galerie","Avis","Contact"].map((l,i) => (
+              <a key={i} href={`#${l.toLowerCase().replace(" ","").replace("à","apropos").replace("accueil","accueil").replace("services","services").replace("galerie","galerie").replace("avis","avis").replace("contact","contact")}`}
+                style={{ display:"block", color:"rgba(255,255,255,0.6)", textDecoration:"none", marginBottom:10, fontSize:"0.875rem", transition:"color 0.2s" }}
+                onMouseOver={e => e.target.style.color="#60a5fa"}
+                onMouseOut={e => e.target.style.color="rgba(255,255,255,0.6)"}
+              >{l}</a>
+            ))}
+          </div>
+
+          {/* Contact */}
+          <div>
+            <h4 style={{ color:"#fff", fontWeight:700, marginBottom:20, fontSize:"0.9rem", letterSpacing:"0.08em" }}>CONTACT</h4>
+            <div style={{ marginBottom:16 }}>
+              <div style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.4)", marginBottom:4 }}>TÉLÉPHONE</div>
+              <a href={`tel:${PHONE}`} style={{ color:"#60a5fa", fontWeight:600, textDecoration:"none", fontSize:"0.9rem" }}>{PHONE_DISPLAY}</a>
+            </div>
+            <div style={{ marginBottom:16 }}>
+              <div style={{ fontSize:"0.75rem", color:"rgba(255,255,255,0.4)", marginBottom:4 }}>ADRESSE</div>
+              <div style={{ fontSize:"0.875rem", lineHeight:1.6 }}>N'gaous, Batna<br/>Algérie</div>
+            </div>
+            <a href={WA_LINK} target="_blank" rel="noopener noreferrer" style={{
+              display:"inline-flex", alignItems:"center", gap:8,
+              background:"linear-gradient(135deg,#25d366,#128c7e)",
+              color:"#fff", padding:"10px 18px", borderRadius:999,
+              fontWeight:700, textDecoration:"none", fontSize:"0.85rem",
+              marginTop:8
+            }}>
+              <WAIcon size={16}/> WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <div style={{
+          borderTop:"1px solid rgba(255,255,255,0.08)",
+          paddingTop:24,
+          display:"flex", justifyContent:"space-between", alignItems:"center",
+          flexWrap:"wrap", gap:12
+        }}>
+          <div style={{ fontSize:"0.8rem" }}>
+            © 2025 EXCELLENCE Centre Dentaire · N'gaous, Batna, Algérie
+          </div>
+          <div style={{ fontSize:"0.8rem" }}>
+            <a href="https://www.google.com/maps/place/EXCELLENCE+centre+dentaire/@35.5534458,5.6085307,17z"
+              target="_blank" rel="noopener noreferrer"
+              style={{ color:"#60a5fa", textDecoration:"none" }}>
+              📍 Google Maps
+            </a>
+          </div>
+        </div>
+      </div>
+      <style>{`
+        @media (max-width: 768px) {
+          footer > div > div:first-child { grid-template-columns: 1fr !important; gap: 32px !important; }
+        }
+      `}</style>
+    </footer>
+  );
+}
+
+/* ─── FLOATING WHATSAPP BUTTON ───────────────────────────── */
+function FloatingWA() {
+  const [show, setShow] = useState(false);
+  useEffect(() => {
+    const t = setTimeout(() => setShow(true), 1200);
+    return () => clearTimeout(t);
+  }, []);
+
+  return show ? (
+    <a href={WA_LINK} target="_blank" rel="noopener noreferrer"
+      className="wa-float"
+      title="Prendre rendez-vous via WhatsApp"
+      style={{
+        width:60, height:60, background:"linear-gradient(135deg,#25d366,#128c7e)",
+        display:"flex", alignItems:"center", justifyContent:"center",
+        boxShadow:"0 6px 24px rgba(37,211,102,0.5)",
+        textDecoration:"none",
+        animation:"pulse-wa 2.5s infinite, fadeIn 0.5s ease"
+      }}>
+      <WAIcon size={30}/>
+    </a>
+  ) : null;
+}
+
+/* ─── APP ────────────────────────────────────────────────── */
+function App() {
+  const [scrolled, setScrolled] = useState(false);
+  useEffect(() => {
+    const fn = () => setScrolled(window.scrollY > 60);
+    window.addEventListener("scroll", fn, { passive:true });
+    return () => window.removeEventListener("scroll", fn);
+  }, []);
+
+  return (
+    <div>
+      <Navbar scrolled={scrolled}/>
+      <Hero/>
+      <About/>
+      <Services/>
+      <Gallery/>
+      <Reviews/>
+      <Contact/>
+      <Footer/>
+      <FloatingWA/>
+    </div>
+  );
+}
+
+const root = ReactDOM.createRoot(document.getElementById("root"));
+root.render(React.createElement(App));
+</script>
+</body>
+</html>
